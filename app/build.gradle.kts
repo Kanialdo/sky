@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("dagger.hilt.android.plugin")
+    kotlin("kapt")
 }
 
 android {
@@ -60,6 +62,9 @@ dependencies {
     implementation(libs.androidx.compose.uiToolingPreview)
     implementation(libs.androidx.lifecycle.lifecycleRuntimeKtx)
     implementation(libs.androidx.activity.activityCompose)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
     debugImplementation(libs.test.androidx.compose.uiTooling)
     debugImplementation(libs.test.androidx.compose.uiTestManifest)
