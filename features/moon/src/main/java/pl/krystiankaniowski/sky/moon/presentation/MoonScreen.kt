@@ -10,14 +10,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import pl.krystiankaniowski.sky.compose.SkyComponents
 
 @Composable
 fun MoonScreen(viewModel: MoonViewModel = MoonViewModel()) {
     Box(modifier = Modifier.padding(16.dp)) {
         when (val state = viewModel.state.collectAsState().value) {
             is MoonViewModel.State.Loaded -> MoonScreenLoaded(state)
-            MoonViewModel.State.Error -> Text("Error")
-            MoonViewModel.State.Loading -> Text("Loading")
+            MoonViewModel.State.Error -> SkyComponents.Error()
+            MoonViewModel.State.Loading -> SkyComponents.Loading()
         }
     }
 }

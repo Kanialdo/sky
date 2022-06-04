@@ -39,8 +39,6 @@ android {
 }
 
 dependencies {
-    implementation(projects.libs.compose)
-
     implementation(libs.androidx.core.coreKtx)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui)
@@ -55,11 +53,4 @@ dependencies {
 
     debugImplementation(libs.test.androidx.compose.uiTooling)
     debugImplementation(libs.test.androidx.compose.uiTestManifest)
-}
-
-dependencies {
-    testImplementation(libs.test.junit4)
-    androidTestImplementation(libs.test.androidx.test.junit4)
-    androidTestImplementation(libs.test.androidx.test.espressoCore)
-    androidTestImplementation(libs.test.androidx.compose.uiTestJunit4)
 }
