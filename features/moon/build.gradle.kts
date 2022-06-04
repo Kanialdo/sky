@@ -1,33 +1,21 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    id("dagger.hilt.android.plugin")
     kotlin("kapt")
 }
 
 android {
+
     compileSdk = 32
 
     defaultConfig {
-        applicationId = "pl.krystiankaniowski.sky"
         minSdk = 21
         targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
     }
 
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
         }
     }
 
@@ -48,16 +36,9 @@ android {
         kotlinCompilerExtensionVersion = libs.versions.compose.get()
     }
 
-    packagingOptions {
-        resources {
-            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
-        }
-    }
 }
 
 dependencies {
-    implementation(projects.features.moon)
-
     implementation(libs.androidx.core.coreKtx)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui)
