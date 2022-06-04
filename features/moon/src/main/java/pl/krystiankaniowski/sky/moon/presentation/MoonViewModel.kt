@@ -12,7 +12,7 @@ class MoonViewModel : ViewModel() {
     sealed class State {
         object Loading : State()
         object Error : State()
-        data class Data(val moonrise: String, val moonset: String, val moonPhase: Float) : State()
+        data class Loaded(val moonrise: String, val moonset: String, val moonPhase: Float) : State()
     }
 
     private val _state: MutableStateFlow<State> = MutableStateFlow(State.Loading)
@@ -21,7 +21,7 @@ class MoonViewModel : ViewModel() {
     init {
         viewModelScope.launch {
             delay(2000)
-            _state.value = State.Data(
+            _state.value = State.Loaded(
                 moonrise = "20:00",
                 moonset = "8:00",
                 moonPhase = 1.0f,
