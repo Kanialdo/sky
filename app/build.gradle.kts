@@ -56,6 +56,7 @@ android {
 }
 
 dependencies {
+    implementation(projects.libs.compose)
     implementation(projects.features.moon)
 
     implementation(libs.androidx.core.coreKtx)

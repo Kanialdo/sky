@@ -3,7 +3,6 @@ package pl.krystiankaniowski.sky.moon.presentation
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -11,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pl.krystiankaniowski.sky.compose.SkyComponents
+import pl.krystiankaniowski.sky.compose.SkyTheme
 
 @Composable
 fun MoonScreen(viewModel: MoonViewModel = MoonViewModel()) {
@@ -36,7 +36,7 @@ private fun MoonScreenLoaded(state: MoonViewModel.State.Loaded) {
 @Preview
 @Composable
 private fun MoonScreenLoadedPreview() {
-    MaterialTheme {
+    SkyTheme {
         MoonScreenLoaded(
             MoonViewModel.State.Loaded(
                 moonrise = "20:00",

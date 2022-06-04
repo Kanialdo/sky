@@ -106,7 +106,7 @@ object SkyComponents {
                 content()
             }
             additionalContent?.let { content ->
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(8.dp))
                 ProvideTextStyle(value = MaterialTheme.typography.bodySmall) {
                     content()
                 }
