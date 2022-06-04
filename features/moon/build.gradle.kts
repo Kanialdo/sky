@@ -45,6 +45,8 @@ dependencies {
     implementation(libs.androidx.compose.uiToolingPreview)
     implementation(libs.androidx.lifecycle.lifecycleRuntimeKtx)
     implementation(libs.androidx.activity.activityCompose)
+    implementation(libs.androidx.lifecycle.viewmodelCompose)
+    implementation(libs.androidx.lifecycle.viewmodelKtx)
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)

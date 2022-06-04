@@ -6,6 +6,7 @@ kotlin = "1.6.21"
 compose = "1.2.0-beta02"
 material3 = "1.0.0-alpha12"
 hilt = "2.38.1"
+lifecycle = "2.4.1"
 
 [libraries]
 
@@ -17,6 +18,8 @@ androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compos
 androidx-compose-uiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 androidx-lifecycle-lifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.4.1" }
 androidx-activity-activityCompose = { module = "androidx.activity:activity-compose", version = "1.4.0" }
+androidx-lifecycle-viewmodelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }

@@ -8,7 +8,7 @@ import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import pl.krystiankaniowski.sky.moon.MoonScreen
+import pl.krystiankaniowski.sky.moon.presentation.MoonScreen
 import pl.krystiankaniowski.sky.ui.theme.SkyTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
