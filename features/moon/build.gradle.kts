@@ -39,6 +39,8 @@ android {
 }
 
 dependencies {
+    implementation(projects.libs.compose)
+
     implementation(libs.androidx.core.coreKtx)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui)

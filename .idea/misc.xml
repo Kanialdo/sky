@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/kryst/workspace/sky/app/src/main/java/pl/krystiankaniowski/sky/MainActivity.kt" value="1.3333333333333333" />
+        <entry key="..\:/Users/kryst/workspace/sky/features/moon/src/main/java/pl/krystiankaniowski/sky/moon/presentation/MoonScreen.kt" value="1.073394495412844" />
+        <entry key="..\:/Users/kryst/workspace/sky/libs/compose/src/main/java/pl/krystiankaniowski/sky/compose/SkyComponents.kt" value="0.28844444444444445" />
       </map>
     </option>
   </component>

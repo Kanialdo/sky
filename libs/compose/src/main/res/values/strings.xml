@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="commons_loading">Loading</string>
+    <string name="commons_no_data">No data</string>
+    <string name="commons_error">Error</string>
+</resources>
