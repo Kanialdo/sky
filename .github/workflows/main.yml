@@ -28,6 +28,8 @@ jobs:
         run: chmod +x ./gradlew
       - name: Init gradle
         run: ./gradlew init
+      - name: Detekt
+        run: ./gradlew detekt
       - name: Assemble
         run: ./gradlew assemble
       - name: Test

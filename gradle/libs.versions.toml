@@ -4,9 +4,10 @@ androidPlugin = "7.2.0"
 kotlin = "1.6.21"
 
 compose = "1.2.0-beta02"
-material3 = "1.0.0-alpha12"
+detekt = "1.20.0"
 hilt = "2.38.1"
 lifecycle = "2.4.1"
+material3 = "1.0.0-alpha12"
 
 [libraries]
 
@@ -23,6 +24,8 @@ androidx-lifecycle-viewmodelKtx = { module = "androidx.lifecycle:lifecycle-viewm
 
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+
+detekt-plugins-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 
 # Test
 
@@ -44,4 +47,5 @@ gradlePlugin-hilt = { group = "com.google.dagger", name = "hilt-android-gradle-p
 
 android-application = { id = "com.android.application", version.ref = "androidPlugin" }
 android-library = { id = "com.android.library", version.ref = "androidPlugin" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

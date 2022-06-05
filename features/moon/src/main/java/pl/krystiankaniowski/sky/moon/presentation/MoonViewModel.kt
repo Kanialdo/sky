@@ -20,6 +20,7 @@ class MoonViewModel : ViewModel() {
 
     init {
         viewModelScope.launch {
+            @Suppress("MagicNumber")
             delay(2000)
             _state.value = State.Loaded(
                 moonrise = "20:00",
@@ -28,5 +29,4 @@ class MoonViewModel : ViewModel() {
             )
         }
     }
-
 }
