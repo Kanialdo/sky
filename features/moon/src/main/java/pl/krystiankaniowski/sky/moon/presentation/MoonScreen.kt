@@ -9,11 +9,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import pl.krystiankaniowski.sky.compose.SkyComponents
 import pl.krystiankaniowski.sky.compose.SkyTheme
 
 @Composable
-fun MoonScreen(viewModel: MoonViewModel = MoonViewModel()) {
+fun MoonScreen() {
+    val viewModel = hiltViewModel<MoonViewModel>()
     Box(modifier = Modifier.padding(16.dp)) {
         when (val state = viewModel.state.collectAsState().value) {
             is MoonViewModel.State.Loaded -> MoonScreenLoaded(state)
@@ -27,9 +29,9 @@ fun MoonScreen(viewModel: MoonViewModel = MoonViewModel()) {
 private fun MoonScreenLoaded(state: MoonViewModel.State.Loaded) {
     Column {
         Text("Moon 🌙")
-        Text("moonrise ${state.moonrise}")
-        Text("moonset ${state.moonset}")
-        Text("moonPhase ${state.moonPhase}")
+        Text("moonrise ${state.rise}")
+        Text("moonset ${state.set}")
+        Text("moonPhase ${state.phase}")
     }
 }
 
@@ -39,9 +41,9 @@ private fun MoonScreenLoadedPreview() {
     SkyTheme {
         MoonScreenLoaded(
             MoonViewModel.State.Loaded(
-                moonrise = "20:00",
-                moonset = "8:00",
-                moonPhase = 1f
+                rise = "20:00",
+                set = "8:00",
+                phase = 1f
             )
         )
     }
