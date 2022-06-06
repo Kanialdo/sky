@@ -5,7 +5,7 @@ import io.ktor.client.call.*
 import io.ktor.client.request.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import pl.krystiankaniowski.sky.moon.domain.model.Coords
+import pl.krystiankaniowski.sky.moon.domain.model.Cords
 import javax.inject.Inject
 
 class OpenWeatherMapEndpoint @Inject constructor(private val client: HttpClient) {
@@ -13,10 +13,9 @@ class OpenWeatherMapEndpoint @Inject constructor(private val client: HttpClient)
     private val endpoint = "https://api.openweathermap.org/data/2.5"
     private val apiKey = "003da542b45fd794cd24797fa7a16d2e"
 
-    suspend fun getWeatherByOneCallApi(location: Coords): OneCallApiResponse =
+    suspend fun getWeatherByOneCallApi(location: Cords): OneCallApiResponse =
         client.get("$endpoint/onecall?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey")
             .body()
-
 }
 
 @Serializable

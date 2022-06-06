@@ -16,7 +16,7 @@ class MoonViewModel @Inject constructor(
 
     sealed class State {
         object Loading : State()
-        object Error : State()
+        data class Error(val message: String?) : State()
         data class Loaded(val rise: String, val set: String, val phase: Float) : State()
     }
 
@@ -33,7 +33,7 @@ class MoonViewModel @Inject constructor(
                     phase = currentMoonInfo.phase,
                 )
             } catch (e: Exception) {
-                _state.value = State.Error
+                _state.value = State.Error(e.message)
             }
         }
     }

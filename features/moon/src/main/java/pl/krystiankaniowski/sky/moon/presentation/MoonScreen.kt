@@ -18,7 +18,7 @@ fun MoonScreen(viewModel: MoonViewModel = hiltViewModel()) {
     Box(modifier = Modifier.padding(16.dp)) {
         when (val state = viewModel.state.collectAsState().value) {
             is MoonViewModel.State.Loaded -> MoonScreenLoaded(state)
-            MoonViewModel.State.Error -> SkyComponents.Error()
+            is MoonViewModel.State.Error -> SkyComponents.Error(messageDetails = state.message)
             MoonViewModel.State.Loading -> SkyComponents.Loading()
         }
     }

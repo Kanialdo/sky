@@ -1,18 +1,23 @@
 package pl.krystiankaniowski.sky.moon.domain.usecase
 
-import kotlinx.coroutines.delay
+import pl.krystiankaniowski.sky.moon.domain.model.Cords
 import pl.krystiankaniowski.sky.moon.domain.model.MoonState
+import pl.krystiankaniowski.sky.moon.infrastructure.OpenWeatherMapEndpoint
 import javax.inject.Inject
 
-class GetCurrentMoonInfoUseCase @Inject constructor() {
+class GetCurrentMoonInfoUseCase @Inject constructor(
+    private val endpoint: OpenWeatherMapEndpoint,
+) {
+
+    private val wawCords = Cords(latitude = 52.23, longitude = 20.77)
 
     suspend operator fun invoke(): MoonState {
-        @Suppress("MagicNumber")
-        delay(2000)
+        val data = endpoint.getWeatherByOneCallApi(wawCords)
+        val today = data.daily?.first() ?: error("No data")
         return MoonState(
-            rise = 0,
-            set = 1000,
-            phase = 1.0f,
+            rise = today.moonrise,
+            set = today.moonset,
+            phase = today.moonPhase.toFloat(),
         )
     }
 }
