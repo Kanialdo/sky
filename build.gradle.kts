@@ -7,7 +7,7 @@ buildscript {
     }
 
     dependencies {
-        classpath(libs.gradlePlugin.hilt)
+        classpath(libs.hilt.gradlePlugin)
     }
 }
 

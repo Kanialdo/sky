@@ -1,6 +1,5 @@
 package pl.krystiankaniowski.sky.moon.presentation
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,6 +9,7 @@ import kotlinx.coroutines.launch
 import pl.krystiankaniowski.sky.moon.domain.usecase.GetCurrentMoonInfoUseCase
 import javax.inject.Inject
 
+@HiltViewModel
 class MoonViewModel @Inject constructor(
     getCurrentMoonInfoUseCase: GetCurrentMoonInfoUseCase,
 ) : ViewModel() {

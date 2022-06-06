@@ -14,8 +14,7 @@ import pl.krystiankaniowski.sky.compose.SkyComponents
 import pl.krystiankaniowski.sky.compose.SkyTheme
 
 @Composable
-fun MoonScreen() {
-    val viewModel = hiltViewModel<MoonViewModel>()
+fun MoonScreen(viewModel: MoonViewModel = hiltViewModel()) {
     Box(modifier = Modifier.padding(16.dp)) {
         when (val state = viewModel.state.collectAsState().value) {
             is MoonViewModel.State.Loaded -> MoonScreenLoaded(state)
