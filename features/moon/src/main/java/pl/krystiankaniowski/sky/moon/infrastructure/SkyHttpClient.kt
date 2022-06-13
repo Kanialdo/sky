@@ -10,9 +10,11 @@ import kotlinx.serialization.json.Json
 @OptIn(ExperimentalSerializationApi::class)
 val skyHttpClient: HttpClient = HttpClient(Android) {
     install(ContentNegotiation) {
-        json(Json {
-            ignoreUnknownKeys = true
-            explicitNulls = false
-        })
+        json(
+            Json {
+                ignoreUnknownKeys = true
+                explicitNulls = false
+            }
+        )
     }
 }

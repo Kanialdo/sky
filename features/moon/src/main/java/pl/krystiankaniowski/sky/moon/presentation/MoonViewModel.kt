@@ -32,7 +32,7 @@ class MoonViewModel @Inject constructor(
                     set = currentMoonInfo.set.toString(),
                     phase = currentMoonInfo.phase,
                 )
-            } catch (e: Exception) {
+            } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
                 _state.value = State.Error(e.message)
             }
         }
