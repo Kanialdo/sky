@@ -1,13 +1,15 @@
 [versions]
 
-androidPlugin = "7.2.0"
+androidPlugin = "7.2.1"
 kotlin = "1.6.21"
 
 compose = "1.2.0-beta02"
 detekt = "1.20.0"
 hilt = "2.38.1"
+ktor = "2.0.2"
 lifecycle = "2.4.1"
 material3 = "1.0.0-alpha12"
+navigation = "2.4.2"
 
 [libraries]
 
@@ -21,11 +23,18 @@ androidx-lifecycle-lifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycl
 androidx-activity-activityCompose = { module = "androidx.activity:activity-compose", version = "1.4.0" }
 androidx-lifecycle-viewmodelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 androidx-lifecycle-viewmodelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
 
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version = "1.0.0" }
+hilt-gradlePlugin = { group = "com.google.dagger", name = "hilt-android-gradle-plugin", version.ref = "hilt" }
 
 detekt-plugins-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+
+ktor-client-contentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktor-client-serializationJson = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 
 # Test
 
@@ -39,8 +48,6 @@ test-hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-
 
 # Classpath
 
-gradlePlugin-hilt = { group = "com.google.dagger", name = "hilt-android-gradle-plugin", version.ref = "hilt" }
-
 [bundles]
 
 [plugins]
@@ -49,3 +56,4 @@ android-application = { id = "com.android.application", version.ref = "androidPl
 android-library = { id = "com.android.library", version.ref = "androidPlugin" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

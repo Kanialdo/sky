@@ -2,17 +2,22 @@ package pl.krystiankaniowski.sky.moon.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.delay
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import pl.krystiankaniowski.sky.moon.domain.usecase.GetCurrentMoonInfoUseCase
+import javax.inject.Inject
 
-class MoonViewModel : ViewModel() {
+@HiltViewModel
+class MoonViewModel @Inject constructor(
+    getCurrentMoonInfoUseCase: GetCurrentMoonInfoUseCase,
+) : ViewModel() {
 
     sealed class State {
         object Loading : State()
-        object Error : State()
-        data class Loaded(val moonrise: String, val moonset: String, val moonPhase: Float) : State()
+        data class Error(val message: String?) : State()
+        data class Loaded(val rise: String, val set: String, val phase: Float) : State()
     }
 
     private val _state: MutableStateFlow<State> = MutableStateFlow(State.Loading)
@@ -20,13 +25,16 @@ class MoonViewModel : ViewModel() {
 
     init {
         viewModelScope.launch {
-            @Suppress("MagicNumber")
-            delay(2000)
-            _state.value = State.Loaded(
-                moonrise = "20:00",
-                moonset = "8:00",
-                moonPhase = 1.0f,
-            )
+            try {
+                val currentMoonInfo = getCurrentMoonInfoUseCase()
+                _state.value = State.Loaded(
+                    rise = currentMoonInfo.rise.toString(),
+                    set = currentMoonInfo.set.toString(),
+                    phase = currentMoonInfo.phase,
+                )
+            } catch (@Suppress("TooGenericExceptionCaught") e: Exception) {
+                _state.value = State.Error(e.message)
+            }
         }
     }
 }

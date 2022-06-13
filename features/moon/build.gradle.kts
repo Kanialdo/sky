@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
+    id("dagger.hilt.android.plugin")
     kotlin("kapt")
 }
 
@@ -49,8 +51,14 @@ dependencies {
     implementation(libs.androidx.activity.activityCompose)
     implementation(libs.androidx.lifecycle.viewmodelCompose)
     implementation(libs.androidx.lifecycle.viewmodelKtx)
+    implementation(libs.androidx.navigation.compose)
+
+    implementation(libs.ktor.client.contentNegotiation)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.serializationJson)
 
     implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
     kapt(libs.hilt.compiler)
 
     debugImplementation(libs.test.androidx.compose.uiTooling)

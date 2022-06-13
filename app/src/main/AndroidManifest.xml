@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="pl.krystiankaniowski.sky">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".SkyApplication"
         android:allowBackup="true"

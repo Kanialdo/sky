@@ -65,8 +65,14 @@ dependencies {
     implementation(libs.androidx.compose.uiToolingPreview)
     implementation(libs.androidx.lifecycle.lifecycleRuntimeKtx)
     implementation(libs.androidx.activity.activityCompose)
+    implementation(libs.androidx.navigation.compose)
+
+    implementation(libs.ktor.client.contentNegotiation)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.serializationJson)
 
     implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
     kapt(libs.hilt.compiler)
 
     debugImplementation(libs.test.androidx.compose.uiTooling)
