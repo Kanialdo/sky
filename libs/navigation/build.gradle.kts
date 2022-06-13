@@ -1,8 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.serialization)
-    id("dagger.hilt.android.plugin")
     kotlin("kapt")
 }
 
@@ -41,9 +39,6 @@ android {
 }
 
 dependencies {
-    implementation(projects.libs.navigation)
-    implementation(projects.libs.compose)
-
     implementation(libs.androidx.core.coreKtx)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui)
@@ -54,21 +49,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodelKtx)
     implementation(libs.androidx.navigation.compose)
 
-    implementation(libs.ktor.client.contentNegotiation)
-    implementation(libs.ktor.client.android)
-    implementation(libs.ktor.client.serializationJson)
-
     implementation(libs.hilt.android)
-    implementation(libs.hilt.navigation.compose)
     kapt(libs.hilt.compiler)
 
     debugImplementation(libs.test.androidx.compose.uiTooling)
     debugImplementation(libs.test.androidx.compose.uiTestManifest)
-}
-
-dependencies {
-    testImplementation(libs.test.junit4)
-    androidTestImplementation(libs.test.androidx.test.junit4)
-    androidTestImplementation(libs.test.androidx.test.espressoCore)
-    androidTestImplementation(libs.test.androidx.compose.uiTestJunit4)
 }
