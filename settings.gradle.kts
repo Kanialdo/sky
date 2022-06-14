@@ -16,5 +16,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Sky"
 include(":app")
+include(":features:about")
 include(":features:moon")
 include(":libs:compose")
+include(":libs:navigation")

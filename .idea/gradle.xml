@@ -13,9 +13,11 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/about" />
             <option value="$PROJECT_DIR$/features/moon" />
             <option value="$PROJECT_DIR$/libs" />
             <option value="$PROJECT_DIR$/libs/compose" />
+            <option value="$PROJECT_DIR$/libs/navigation" />
           </set>
         </option>
       </GradleProjectSettings>
