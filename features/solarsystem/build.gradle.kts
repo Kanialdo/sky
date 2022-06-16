@@ -1,33 +1,23 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
     id("dagger.hilt.android.plugin")
     kotlin("kapt")
 }
 
 android {
+
     compileSdk = 32
 
     defaultConfig {
-        applicationId = "pl.krystiankaniowski.sky"
         minSdk = 21
         targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
     }
 
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
         }
     }
 
@@ -48,19 +38,11 @@ android {
         kotlinCompilerExtensionVersion = libs.versions.compose.get()
     }
 
-    packagingOptions {
-        resources {
-            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
-        }
-    }
 }
 
 dependencies {
-    implementation(projects.libs.compose)
     implementation(projects.libs.navigation)
-    implementation(projects.features.about)
-    implementation(projects.features.moon)
-    implementation(projects.features.solarsystem)
+    implementation(projects.libs.compose)
 
     implementation(libs.androidx.core.coreKtx)
     implementation(libs.androidx.compose.material3)
@@ -68,6 +50,8 @@ dependencies {
     implementation(libs.androidx.compose.uiToolingPreview)
     implementation(libs.androidx.lifecycle.lifecycleRuntimeKtx)
     implementation(libs.androidx.activity.activityCompose)
+    implementation(libs.androidx.lifecycle.viewmodelCompose)
+    implementation(libs.androidx.lifecycle.viewmodelKtx)
     implementation(libs.androidx.navigation.compose)
 
     implementation(libs.ktor.client.contentNegotiation)

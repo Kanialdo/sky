@@ -1,8 +1,7 @@
-package pl.krystiankaniowski.sky.moon.presentation
+package pl.krystiankaniowski.sky.solarsystem.presentation
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
@@ -17,18 +16,23 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import pl.krystiankaniowski.sky.compose.SkyComponents
 import pl.krystiankaniowski.sky.compose.SkyTheme
-import pl.krystiankaniowski.sky.moon.R
 import pl.krystiankaniowski.sky.navigation.Destination
 import pl.krystiankaniowski.sky.navigation.navigate
+import pl.krystiankaniowski.sky.solarsystem.R
+import pl.krystiankaniowski.sky.solarsystem.domain.CelestialBody
+import pl.krystiankaniowski.sky.solarsystem.domain.CelestialBodyType
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MoonScreen(navHostController: NavHostController, viewModel: MoonViewModel = hiltViewModel()) {
+fun SolarSystemScreen(
+    navHostController: NavHostController,
+    viewModel: SolarSystemViewModel = hiltViewModel()
+) {
 
     Scaffold(
         topBar = {
             SmallTopAppBar(
-                title = { Text(stringResource(R.string.moon_title)) },
+                title = { Text(stringResource(R.string.solarsystem_title)) },
                 actions = {
                     IconButton(
                         onClick = { navHostController.navigate(Destination.About) }
@@ -48,33 +52,40 @@ fun MoonScreen(navHostController: NavHostController, viewModel: MoonViewModel = 
                 .padding(16.dp)
         ) {
             when (val state = viewModel.state.collectAsState().value) {
-                is MoonViewModel.State.Loaded -> MoonScreenLoaded(state)
-                is MoonViewModel.State.Error -> SkyComponents.Error(messageDetails = state.message)
-                MoonViewModel.State.Loading -> SkyComponents.Loading()
+                is SolarSystemViewModel.State.Loaded -> SolarSystemLoaded(state)
+                is SolarSystemViewModel.State.Error -> SkyComponents.Error(messageDetails = state.message)
+                SolarSystemViewModel.State.Loading -> SkyComponents.Loading()
             }
         }
     }
 }
 
 @Composable
-private fun MoonScreenLoaded(state: MoonViewModel.State.Loaded) {
-    Column {
-        Text("Moon 🌙")
-        Text("moonrise ${state.rise}")
-        Text("moonset ${state.set}")
-        Text("moonPhase ${state.phase}")
+private fun SolarSystemLoaded(state: SolarSystemViewModel.State.Loaded) {
+    LazyColumn {
+        items(state.data.size) {
+            CelestialBodyRow(state.data[it])
+        }
     }
 }
 
-@Preview
 @Composable
-private fun MoonScreenLoadedPreview() {
+private fun CelestialBodyRow(celestialBody: CelestialBody) {
+    Row(modifier = Modifier.padding(16.dp)) {
+        Text(text = celestialBody.name)
+        Spacer(modifier = Modifier.width(16.dp))
+        Text(text = celestialBody.type.toString())
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun CelestialBodyRowPreview() {
     SkyTheme {
-        MoonScreenLoaded(
-            MoonViewModel.State.Loaded(
-                rise = "20:00",
-                set = "8:00",
-                phase = 1f
+        CelestialBodyRow(
+            CelestialBody(
+                name = "Sun",
+                type = CelestialBodyType.Star
             )
         )
     }
