@@ -1,10 +1,8 @@
 package pl.krystiankaniowski.sky
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Build
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,10 +12,7 @@ import pl.krystiankaniowski.sky.about.presentation.AboutScreen
 import pl.krystiankaniowski.sky.compose.SkyTheme
 import pl.krystiankaniowski.sky.moon.presentation.MoonScreen
 import pl.krystiankaniowski.sky.navigation.Destination
-
-data class MainRoute(val destination: Destination, val name: String, val icon: ImageVector)
-
-val mainNavigation = listOf(MainRoute(Destination.Moon, "Moon", Icons.Default.Build))
+import pl.krystiankaniowski.sky.solarsystem.presentation.SolarSystemScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -41,6 +36,7 @@ fun SkyApplicationContent() {
                 startDestination = Destination.Moon.route,
             ) {
                 composable(Destination.Moon.route) { MoonScreen(navController) }
+                composable(Destination.SolarSystem.route) { SolarSystemScreen(navController) }
                 composable(Destination.About.route) { AboutScreen(navController) }
             }
         }
@@ -52,7 +48,7 @@ fun SkyBottomBar(navController: NavController) {
     BottomAppBar {
         mainNavigation.forEach { item ->
             Button(onClick = { navController.navigate(item.destination.route) }) {
-                Text(text = item.name)
+                Text(text = stringResource(item.name))
             }
         }
     }

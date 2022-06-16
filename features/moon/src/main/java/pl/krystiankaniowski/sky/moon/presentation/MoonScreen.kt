@@ -10,12 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import pl.krystiankaniowski.sky.compose.SkyComponents
 import pl.krystiankaniowski.sky.compose.SkyTheme
+import pl.krystiankaniowski.sky.moon.R
 import pl.krystiankaniowski.sky.navigation.Destination
 import pl.krystiankaniowski.sky.navigation.navigate
 
@@ -26,7 +28,7 @@ fun MoonScreen(navHostController: NavHostController, viewModel: MoonViewModel = 
     Scaffold(
         topBar = {
             SmallTopAppBar(
-                title = { Text("Sky") },
+                title = { Text(stringResource(R.string.moon_title)) },
                 actions = {
                     IconButton(
                         onClick = { navHostController.navigate(Destination.About) }

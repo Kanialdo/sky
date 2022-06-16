@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 
 sealed class Destination(val route: String) {
     object Moon : Destination("/moon")
+    object SolarSystem : Destination("/solarsystem")
     object About : Destination("/about")
 }
 

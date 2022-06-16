@@ -9,13 +9,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import pl.krystiankaniowski.sky.compose.SkyComponents
+import pl.krystiankaniowski.sky.compose.SkyTheme
 import pl.krystiankaniowski.sky.navigation.Destination
 import pl.krystiankaniowski.sky.navigation.navigate
+import pl.krystiankaniowski.sky.solarsystem.R
 import pl.krystiankaniowski.sky.solarsystem.domain.CelestialBody
+import pl.krystiankaniowski.sky.solarsystem.domain.CelestialBodyType
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -27,7 +32,7 @@ fun SolarSystemScreen(
     Scaffold(
         topBar = {
             SmallTopAppBar(
-                title = { Text("Sky") },
+                title = { Text(stringResource(R.string.solarsystem_title)) },
                 actions = {
                     IconButton(
                         onClick = { navHostController.navigate(Destination.About) }
@@ -73,3 +78,15 @@ private fun CelestialBodyRow(celestialBody: CelestialBody) {
     }
 }
 
+@Preview(showBackground = true)
+@Composable
+private fun CelestialBodyRowPreview() {
+    SkyTheme {
+        CelestialBodyRow(
+            CelestialBody(
+                name = "Sun",
+                type = CelestialBodyType.Star
+            )
+        )
+    }
+}
