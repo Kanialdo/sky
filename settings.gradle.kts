@@ -18,5 +18,6 @@ rootProject.name = "Sky"
 include(":app")
 include(":features:about")
 include(":features:moon")
+include(":features:solarsystem")
 include(":libs:compose")
 include(":libs:navigation")
